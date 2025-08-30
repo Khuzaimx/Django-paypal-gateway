@@ -64,9 +64,10 @@ def category(request, foo):
     try:
         category=Category.objects.get(name=foo)
         products=Product.objects.filter(category=category)
-        return render(request, 'store/category.html', {'products' : products})
+        return render(request, 'store/category.html', {'products' : products, 'category' : category})
     except:
-          messages.success(request, "OOps no item found in the dpecific category..")  
+          messages.success(request, "OOps no item found in the specific category..")  
+          return redirect('home')
 
 
 
